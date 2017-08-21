@@ -4,7 +4,7 @@
 
 작성한 코드는 round\<번호\>/\<번호\>\<문제코드\>\_\<아이디\>.cpp의 형식을 맞춰서 저장해주세요.
 
-ex) round422/A\_luke0201.cpp
+ex) round422/422A\_luke0201.cpp
 
 ## Contributors
 

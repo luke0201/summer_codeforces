@@ -8,8 +8,8 @@ ex) round422/422A\_luke0201.cpp
 
 ## Contributors
 
-luke0201: 이주명
+[luke0201](https://github.com/luke0201): 이주명
 
-zookhee: 김연교
+[zookhee](https://github.com/zookhee): 김연교
 
-diqdiqdiq: 편경민
+[diqdiqdiq](https://github.com/peter1201): 편경민

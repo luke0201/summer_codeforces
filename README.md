@@ -6,6 +6,16 @@
 
 ex) round422/422A\_luke0201.cpp
 
+## How to clone this repository
+
+다음 명령어를 통해 자신의 branch를 받아갈 수 있습니다.
+
+```
+git clone git@github.com:luke0201/summer_codeforces.git --branch <아이디> --single_branch
+```
+
+* \<아이디\>는 자신의 아이디로 바꿔주세요.
+
 ## Contributors
 
 [luke0201](https://github.com/luke0201): 이주명

@@ -11,10 +11,11 @@ ex) round422/422A\_luke0201.cpp
 다음 명령어를 통해 자신의 branch를 받아갈 수 있습니다.
 
 ```
-git clone git@github.com:luke0201/summer_codeforces.git --branch <아이디> --single_branch
+git clone git@github.com:luke0201/summer_codeforces.git --branch <아이디> --single-branch
 ```
 
 * \<아이디\>는 자신의 아이디로 바꿔주세요.
+* 업로드 전에 pull 한번씩만 해주세요.
 
 ## Contributors
 
@@ -25,3 +26,5 @@ git clone git@github.com:luke0201/summer_codeforces.git --branch <아이디> --s
 [diqdiqdiq](https://github.com/peter1201): 편경민
 
 [highalps](https://github.com/highalps): 송인호
+
+[adman](https://github.com/admanV): 조현성

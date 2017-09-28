@@ -1,14 +1,14 @@
-from sys import stdout
+import sys
 
 n = int(input())
 
 print('?', '0' * n)
-stdout.flush()
+sys.stdout.flush()
 cnt1 = int(input())
 
 def ask(a, b):
     print('?', '0' * (a - 1) + '1' * (b - a + 1) + '0' * (n - b))
-    stdout.flush()
+    sys.stdout.flush()
     return int(input())
 
 pos0, pos1 = 0, 0

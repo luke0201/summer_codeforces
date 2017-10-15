@@ -1,5 +1,4 @@
-from copy import copy
-import heapq
+from itertools import accumulate
 
 n, k = (int(x) for x in input().split())
 arr = [int(x) for x in input().split()]
@@ -9,12 +8,7 @@ if k == 1:
 elif k >= 3:
     print(max(arr))
 else:
-    lefts = [arr[0]]
-    for x in arr[1:-1]:
-        lefts.append(min(lefts[-1], x))
-    rights = [arr[-1]]
-    for x in reversed(arr[1:-1]):
-        rights.append(min(rights[-1], x))
-    rights.reverse()
-
-    print(max(max(l, r) for l, r in zip(lefts, rights)))
+    lefts = list(accumulate(arr[:-1], func=min))
+    rights = reversed(list(accumulate(reversed(arr[1:]), func=min)))
+    splits = (max(l, r) for l, r in zip(lefts, rights))
+    print(max(splits))

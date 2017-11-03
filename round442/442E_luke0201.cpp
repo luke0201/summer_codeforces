@@ -38,6 +38,57 @@ public:
     int get_sum(int, int, bool=false, int=1, int=1, int=N);
 };
 
+void Lazy_Segment_Tree::change(int left, int right, int p, int l, int r)
+{
+    if (l >= left && r <= right)
+    {
+        int n = r - l + 1;
+        chk[p] ^= true;
+        sum[p] = n - sum[p];
+        for (int i = p / 2; i >= 1; i /= 2)
+        {
+            n *= 2;
+            sum[i] = sum[i * 2] + sum[i * 2 + 1];
+            if (chk[i])
+            {
+                sum[i] = n - sum[i];
+            }
+        }
+        return;
+    }
+
+    int m = (l + r) / 2;
+    if (m >= left)
+    {
+        change(left, right, p * 2, l, m);
+    }
+    if (m + 1 <= right)
+    {
+        change(left, right, p * 2 + 1, m + 1, r);
+    }
+}
+
+int Lazy_Segment_Tree::get_sum(int left, int right, bool flag, int p, int l, int r)
+{
+    if (l >= left && r <= right)
+    {
+        int n = r - l + 1;
+        return !flag ? sum[p] : (n - sum[p]);
+    }
+
+    int ret = 0;
+    int m = (l + r) / 2;
+    if (m >= left)
+    {
+        ret += get_sum(left, right, flag ^ chk[p], p * 2, l, m);
+    }
+    if (m + 1 <= right)
+    {
+        ret += get_sum(left, right, flag ^ chk[p], p * 2 + 1, m + 1, r);
+    }
+    return ret;
+}
+
 int arr[N + 1];
 
 int main()
@@ -90,55 +141,4 @@ void dfs(int u)
         dfs(v);
         subsize[idx[u]] += subsize[idx[v]];
     }
-}
-
-void Lazy_Segment_Tree::change(int left, int right, int p, int l, int r)
-{
-    if (l >= left && r <= right)
-    {
-        int n = r - l + 1;
-        chk[p] ^= true;
-        sum[p] = n - sum[p];
-        for (int i = p / 2; i >= 1; i /= 2)
-        {
-            n *= 2;
-            sum[i] = sum[i * 2] + sum[i * 2 + 1];
-            if (chk[i])
-            {
-                sum[i] = n - sum[i];
-            }
-        }
-        return;
-    }
-
-    int m = (l + r) / 2;
-    if (m >= left)
-    {
-        change(left, right, p * 2, l, m);
-    }
-    if (m + 1 <= right)
-    {
-        change(left, right, p * 2 + 1, m + 1, r);
-    }
-}
-
-int Lazy_Segment_Tree::get_sum(int left, int right, bool flag, int p, int l, int r)
-{
-    if (l >= left && r <= right)
-    {
-        int n = r - l + 1;
-        return !flag ? sum[p] : (n - sum[p]);
-    }
-
-    int ret = 0;
-    int m = (l + r) / 2;
-    if (m >= left)
-    {
-        ret += get_sum(left, right, flag ^ chk[p], p * 2, l, m);
-    }
-    if (m + 1 <= right)
-    {
-        ret += get_sum(left, right, flag ^ chk[p], p * 2 + 1, m + 1, r);
-    }
-    return ret;
 }
